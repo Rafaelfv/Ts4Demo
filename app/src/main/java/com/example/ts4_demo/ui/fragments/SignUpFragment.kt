@@ -1,4 +1,4 @@
-package com.example.ts4_demo.ui.ui.fragments
+package com.example.ts4_demo.ui.fragments
 
 class SignUpFragment {
 

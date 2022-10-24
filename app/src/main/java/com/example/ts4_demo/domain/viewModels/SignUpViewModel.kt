@@ -1,4 +1,6 @@
 package com.example.ts4_demo.ui.viewModels
 
-class SignUpViewModel {
+import com.example.ts4_demo.domain.viewModels.BaseViewModel
+
+class SignUpViewModel: BaseViewModel() {
 }

@@ -1,4 +1,6 @@
-package com.example.ts4_demo.ui.ui.activities
+package com.example.ts4_demo.ui.activities
 
-class LoginActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class LoginActivity: AppCompatActivity() {
 }

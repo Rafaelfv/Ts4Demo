@@ -16,6 +16,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "BASE_URL", '"http://www.ts4.com.mx"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -69,5 +70,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     // RxAndroid
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //RxAndroid with retrofit.
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
 }

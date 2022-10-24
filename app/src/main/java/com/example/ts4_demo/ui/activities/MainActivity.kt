@@ -1,4 +1,4 @@
-package com.example.ts4_demo.ui.ui.activities
+package com.example.ts4_demo.ui.activities
 
 import android.os.Bundle
 
