@@ -1,8 +1,11 @@
 package com.example.ts4_demo.utils
 
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.ts4_demo.R
+import com.example.ts4_demo.Ts4Application
 
 
 fun setFragmentExtension(
@@ -38,4 +41,14 @@ fun removeFragmentExtension(fragmentManager: FragmentManager, fragment: Fragment
     fragmentManager.beginTransaction()
         .remove(fragment)
         .commitAllowingStateLoss()
+}
+
+fun EditText.checkForEmpty() {
+    if(this.text.isEmpty()) {
+        this.setError("Dato necesario")
+    }
+}
+
+fun String.showToastMessage(){
+    Toast.makeText(Ts4Application.context,this, Toast.LENGTH_LONG).show()
 }
