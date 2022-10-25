@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="log_in">Iniciar Sesion</string>
+    <string name="sign_in">Registrarse</string>
+    <string name="empty_field">Este campo no puede estar vacío</string>
+    <string name="error_server">Ocurrio un error, intente de nuevo mas tarde</string>
+</resources>
