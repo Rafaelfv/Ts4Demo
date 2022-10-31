@@ -1,6 +1,6 @@
 package com.example.ts4_demo.domain.repository
 
-import com.example.ts4_demo.ResponseBase
+import com.example.ts4_demo.ResponseSignup
 import com.example.ts4_demo.data.models.User
 import io.reactivex.Single
 import retrofit2.Response
@@ -10,8 +10,8 @@ import retrofit2.http.POST
 
 interface ApiLogin {
 
-    @Headers("Accept: application/json", "Connection: close")
-    @POST("signup")
-    fun signup(@Body user: User): Single<Response<ResponseBase>>
+    @Headers("Authorization: Bearer 2viktpsXucqnjEj6L7mRefe5mkQT7W4c","Accept: application/json", "Connection: close")
+    @POST("registerUser")
+    fun signup(@Body user: User): Single<Response<ResponseSignup>>
 
 }

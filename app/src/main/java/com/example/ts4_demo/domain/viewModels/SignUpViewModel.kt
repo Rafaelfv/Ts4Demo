@@ -3,7 +3,7 @@ package com.example.ts4_demo.ui.viewModels
 import android.view.View
 import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
-import com.example.ts4_demo.ResponseBase
+import com.example.ts4_demo.ResponseSignup
 import com.example.ts4_demo.data.models.User
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
@@ -37,9 +37,10 @@ class SignUpViewModel: BaseViewModel() {
         userPass?.checkForEmpty()
         userPassConfirm?.checkForEmpty()
 
-        val newUSer = User(userName?.text.toString(),userEmail?.text.toString(),"")
-
-        subscription = api.signup(newUSer)
+        //val newUSer = User(userName?.text.toString(),userEmail?.text.toString(),"")
+        val user = User(username = "Rafafv", email = "rflores@ts4.mx", password = "Rafa123@", firstName = "Rafael"
+        , firstSurname = "Flores", secondSurname = "Velazquez", profile = "promoter")
+        subscription = api.signup(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { onSubscribeStart()}
@@ -49,16 +50,17 @@ class SignUpViewModel: BaseViewModel() {
     }
 
     private fun showError(error: Throwable?) {
-
+        error?.printStackTrace()
     }
 
-    private fun onSuccessSigUp(response: Response<ResponseBase>?) {
+    private fun onSuccessSigUp(response: Response<ResponseSignup>?) {
+
         when (response?.code()) {
-            202 -> {
-                codeHttp.value = 202
+            201 -> {
+                codeHttp.value = 201
             }
-            403 -> codeHttp.value = 403
-            404 -> codeHttp.value = 404
+            400 -> codeHttp.value = 400
+            401 -> codeHttp.value = 401
             500 -> codeHttp.value = 500
             200 ->{
                 codeHttp.value = 200

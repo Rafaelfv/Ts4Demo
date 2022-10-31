@@ -39,13 +39,13 @@ class SignUpFragment: Fragment() {
 
         viewModel.codeHttp.observe(viewLifecycleOwner, Observer<Int> {
             when(it){
-                202 -> {
+                201 -> {
                     "Registro exitoso".showToastMessage()
                     //listener.goToCodeFragment(it.body())
                 }
-                403 -> "un error".showToastMessage()
-                404 -> "un error".showToastMessage()
-                200 -> {
+                400 -> "The username is already in use by another account.".showToastMessage()
+                401 -> "Invalid application token.".showToastMessage()
+                else -> {
 
                 }
             }
