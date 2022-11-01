@@ -17,7 +17,7 @@ interface ApiLogin {
         "Accept: application/json",
         "Connection: close"
     )
-    @POST("login")
+    @POST("signIn")
     fun login(@Body credentials: Credentials): Single<Response<LoginResponse>>
 
     @Headers("Accept: application/json", "Connection: close")
