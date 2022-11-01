@@ -44,6 +44,12 @@ class Ts4Application : Application() {
         val getAppName: String
             get() = resources.getString(R.string.app_name)
 
+        val getLoginSuccess: String
+            get() = resources.getString(R.string.loggin_success)
+
+        val getBadCredentials: String
+            get() = resources.getString(R.string.bad_credentials)
+
         val getEmptyMessage: String
             get() = resources.getString(R.string.empty_field)
 

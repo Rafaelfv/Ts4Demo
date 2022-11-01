@@ -4,15 +4,16 @@ import android.view.View
 import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import com.example.ts4_demo.Ts4Application
-import com.example.ts4_demo.data.models.Credentials
+import com.example.ts4_demo.data.models.login.Credentials
+import com.example.ts4_demo.data.models.login.LoginResponse
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
-import com.example.ts4_demo.utils.SUCCESS
 import com.example.ts4_demo.utils.showToastMessage
 import com.grupo.jibaro.tienditas_repartidor.utils.MySharePreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 import javax.inject.Inject
 
 class SignInViewModel : BaseViewModel() {
@@ -35,10 +36,7 @@ class SignInViewModel : BaseViewModel() {
             return
         }
 
-        //  TODO find the email address in Email's Table in Firebase
-        //  TODO get the email and send to endpoint to logIn
-
-        val credentials = Credentials("jgrodriguez@ts4.mx", pass.text.toString().trim())
+        val credentials = Credentials(user.text.toString().trim(), pass.text.toString().trim())
 
         subscription = api.login(credentials)
             .subscribeOn(Schedulers.io())
@@ -47,16 +45,37 @@ class SignInViewModel : BaseViewModel() {
             .doOnTerminate { loadingVisibility.value = View.GONE }
             .subscribe(
                 { it ->
-                    if (it.code() == SUCCESS) {
-                        isLogin.value = true
-                        MySharePreferences.setLogin(true)
-                    } else {
-                        Ts4Application.resourceManager.getErrorServer
-                    }
+                    onSuccessSigUp(it)
                 }, { error ->
                     showError(error)
                 }
             )
+    }
+
+    private fun onSuccessSigUp(response: Response<LoginResponse>?) {
+
+        when (response?.code()) {
+            200 -> {
+                isLogin.value = true
+                MySharePreferences.setLogin(true)
+                MySharePreferences.setIdToken(response.body()!!.idToken)
+                MySharePreferences.setRefreshToken(response.body()!!.refreshToken)
+                MySharePreferences.setSalesUserId(response.body()!!.salesforceUserId)
+                MySharePreferences.setSalesforceToken(response.body()!!.salesforceIdToken)
+
+                success(Ts4Application.resourceManager.getLoginSuccess)
+            }
+            400 -> {
+                Ts4Application.resourceManager.getBadCredentials.showToastMessage()
+            }
+            else -> {
+                Ts4Application.resourceManager.getErrorServer.showToastMessage()
+            }
+        }
+    }
+
+    private fun success(message: String) {
+        message?.showToastMessage()
     }
 
     private fun showError(error: Throwable?) {

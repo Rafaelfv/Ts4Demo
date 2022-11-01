@@ -15,4 +15,6 @@
     <string name="sign_in">Sign In</string>
     <string name="empty_field">This field can not be empty</string>
     <string name="error_server">An error occurred, please try again later</string>
+    <string name="loggin_success">Login successful</string>
+    <string name="bad_credentials">The username and/or password are incorrect</string>
 </resources>

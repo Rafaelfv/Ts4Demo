@@ -49,7 +49,7 @@ class SignInFragment : Fragment() {
 
         viewModel.isLogin.observe(viewLifecycleOwner) {
             if (it) {
-                //TODO show the new fragment
+                //TODO show the new fragment or activity
             }
         }
 

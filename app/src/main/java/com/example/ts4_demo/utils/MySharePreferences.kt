@@ -30,12 +30,36 @@ object MySharePreferences {
         return preferences.getBoolean(IS_LOGIN_FLAG, false)
     }
 
-    fun setToken(token: String) {
-        editor.putString("token", token).commit()
+    fun setIdToken(token: String) {
+        editor.putString("idToken", token).commit()
     }
 
-    fun getToken(): String {
-        return preferences.getString("token", "").toString()
+    fun getIdToken(): String {
+        return preferences.getString("idToken", "").toString()
+    }
+
+    fun setSalesforceToken(token: String) {
+        editor.putString("salesforceToken", token).commit()
+    }
+
+    fun getSalesforceToken(): String {
+        return preferences.getString("salesforceToken", "").toString()
+    }
+
+    fun setRefreshToken(token: String) {
+        editor.putString("refreshToken", token).commit()
+    }
+
+    fun getRefreshToken(): String {
+        return preferences.getString("refreshToken", "").toString()
+    }
+
+    fun setSalesUserId(token: String) {
+        editor.putString("salesforceUI", token).commit()
+    }
+
+    fun getSalesforceUserId(): String {
+        return preferences.getString("salesforceUI", "").toString()
     }
 
     fun setAlreadyDelivery(registered: Boolean) {
