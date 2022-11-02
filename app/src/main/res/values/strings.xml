@@ -17,4 +17,5 @@
     <string name="error_server">An error occurred, please try again later</string>
     <string name="loggin_success">Login successful</string>
     <string name="bad_credentials">The username and/or password are incorrect</string>
+    <string name="no_verify">Unverified account, check your mail and verify your registration</string>
 </resources>

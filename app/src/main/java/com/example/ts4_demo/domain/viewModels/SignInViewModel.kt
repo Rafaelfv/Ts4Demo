@@ -66,7 +66,7 @@ class SignInViewModel : BaseViewModel() {
                 success(Ts4Application.resourceManager.getLoginSuccess)
             }
             400 -> {
-                Ts4Application.resourceManager.getBadCredentials.showToastMessage()
+                Ts4Application.resourceManager.getNoVerify.showToastMessage()
             }
             else -> {
                 Ts4Application.resourceManager.getErrorServer.showToastMessage()

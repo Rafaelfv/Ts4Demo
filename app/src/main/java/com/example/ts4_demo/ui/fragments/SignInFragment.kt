@@ -1,5 +1,6 @@
 package com.example.ts4_demo.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.ts4_demo.R
+import com.example.ts4_demo.ui.activities.DashboardActivity
 import com.example.ts4_demo.ui.viewModels.SignInViewModel
 import com.example.ts4_demo.utils.FRAGMENT_TAG_SIGNUP
 import com.example.ts4_demo.utils.addFragmentExtension
@@ -49,7 +51,9 @@ class SignInFragment : Fragment() {
 
         viewModel.isLogin.observe(viewLifecycleOwner) {
             if (it) {
-                //TODO show the new fragment or activity
+                val intent = Intent(requireActivity(), DashboardActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
             }
         }
 

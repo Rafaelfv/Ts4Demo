@@ -47,8 +47,8 @@ class Ts4Application : Application() {
         val getLoginSuccess: String
             get() = resources.getString(R.string.loggin_success)
 
-        val getBadCredentials: String
-            get() = resources.getString(R.string.bad_credentials)
+        val getNoVerify: String
+            get() = resources.getString(R.string.no_verify)
 
         val getEmptyMessage: String
             get() = resources.getString(R.string.empty_field)

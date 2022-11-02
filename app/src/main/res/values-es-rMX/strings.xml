@@ -8,4 +8,5 @@
     <string name="error_server">Ocurrio un error, intente de nuevo mas tarde</string>
     <string name="loggin_success">Inicio de sesión exitoso</string>
     <string name="bad_credentials">El usuario y/o contraseña son incorrectos</string>
+    <string name="no_verify">Cuenta no verificada, revise su correo y verifique su registro</string>
 </resources>
