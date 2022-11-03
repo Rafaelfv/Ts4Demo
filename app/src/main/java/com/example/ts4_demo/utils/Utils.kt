@@ -61,8 +61,12 @@ fun EditText?.checkIfEmailSyntax(errorMessage: String = "Error de sintaxis"): Bo
     }
 }
 
+fun EditText.checkForEmpty(message: String) {
+    if (this.text.isEmpty()) {
+        this.error = message
+    }
+}
 
-
-fun String.showToastMessage(){
-    Toast.makeText(Ts4Application.context,this, Toast.LENGTH_LONG).show()
+fun String.showToastMessage() {
+    Toast.makeText(Ts4Application.context, this, Toast.LENGTH_LONG).show()
 }

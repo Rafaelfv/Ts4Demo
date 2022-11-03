@@ -9,4 +9,13 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_in">Sign In</string>
+    <string name="empty_field">This field can not be empty</string>
+    <string name="error_server">An error occurred, please try again later</string>
+    <string name="loggin_success">Login successful</string>
+    <string name="bad_credentials">The username and/or password are incorrect</string>
+    <string name="no_verify">Unverified account, check your mail and verify your registration</string>
 </resources>
