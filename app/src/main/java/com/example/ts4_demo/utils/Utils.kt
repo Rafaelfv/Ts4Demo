@@ -44,11 +44,17 @@ fun removeFragmentExtension(fragmentManager: FragmentManager, fragment: Fragment
 }
 
 fun EditText.checkForEmpty() {
-    if(this.text.isEmpty()) {
+    if (this.text.isEmpty()) {
         this.setError("Dato necesario")
     }
 }
 
-fun String.showToastMessage(){
-    Toast.makeText(Ts4Application.context,this, Toast.LENGTH_LONG).show()
+fun EditText.checkForEmpty(message: String) {
+    if (this.text.isEmpty()) {
+        this.error = message
+    }
+}
+
+fun String.showToastMessage() {
+    Toast.makeText(Ts4Application.context, this, Toast.LENGTH_LONG).show()
 }

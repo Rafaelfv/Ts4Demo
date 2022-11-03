@@ -8,6 +8,7 @@ import com.example.ts4_demo.data.models.login.Credentials
 import com.example.ts4_demo.data.models.login.LoginResponse
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
+import com.example.ts4_demo.utils.checkForEmpty
 import com.example.ts4_demo.utils.showToastMessage
 import com.grupo.jibaro.tienditas_repartidor.utils.MySharePreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,12 +28,12 @@ class SignInViewModel : BaseViewModel() {
     fun signIn(user: EditText?, pass: EditText?) {
 
         if (user?.text!!.isEmpty()) {
-            user.error = Ts4Application.resourceManager.getEmptyMessage
+            user.checkForEmpty(Ts4Application.resourceManager.getEmptyMessage)
             return
         }
 
         if (pass?.text!!.isEmpty()) {
-            pass.error = Ts4Application.resourceManager.getEmptyMessage
+            pass.checkForEmpty(Ts4Application.resourceManager.getEmptyMessage)
             return
         }
 
