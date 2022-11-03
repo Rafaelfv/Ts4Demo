@@ -47,7 +47,7 @@ class SignUpViewModel: BaseViewModel() {
             return
         }
 
-       /* val user = User (username = userUsername?.text.toString(), email = userEmail?.text.toString(),
+        val user = User (username = userUsername?.text.toString(), email = userEmail?.text.toString(),
             password = userPass?.text.toString(), firstName = userName?.text.toString(),
             firstSurname = userLastName?.text.toString(), secondSurname = userSurname?.text.toString(), profile = "promoter")
         subscription = api.signup(user)
@@ -56,7 +56,7 @@ class SignUpViewModel: BaseViewModel() {
             .doOnSubscribe { onSubscribeStart()}
             .doOnTerminate { onTerminate() }
             .subscribe({ it -> onSuccessSigUp(it) },
-                { error -> showError(error) })*/
+                { error -> showError(error) })
     }
 
     private fun showError(error: Throwable?) {
