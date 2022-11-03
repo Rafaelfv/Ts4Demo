@@ -1,4 +1,4 @@
-package com.grupo.jibaro.tienditas_repartidor.injection.module
+package com.example.ts4_demo.injection.module
 
 import com.example.ts4_demo.BuildConfig
 import com.example.ts4_demo.domain.repository.ApiLogin
@@ -35,7 +35,7 @@ object NetworkModule {
     @Provides
     @Reusable
     @JvmStatic
-    internal fun provideRetrofitInterface(okHttpClient: OkHttpClient,gson: Gson): Retrofit {
+    internal fun provideRetrofitInterface(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -48,7 +48,9 @@ object NetworkModule {
     fun getGson(): Gson {
         val gson = GsonBuilder()
             .setLenient()
-            .registerTypeAdapter(Date::class.java, JsonDeserializer { json, _, _ -> Date(json.asJsonPrimitive.asLong) })
+            .registerTypeAdapter(
+                Date::class.java,
+                JsonDeserializer { json, _, _ -> Date(json.asJsonPrimitive.asLong) })
             .create()
         return gson
     }
@@ -60,7 +62,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun getInterceptor():HttpLoggingInterceptor{
+    fun getInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
