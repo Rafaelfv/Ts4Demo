@@ -7,7 +7,8 @@ import com.example.ts4_demo.ResponseSignup
 import com.example.ts4_demo.data.models.User
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
-import com.example.ts4_demo.utils.checkForEmpty
+import com.example.ts4_demo.utils.checkIfEmailSyntax
+import com.example.ts4_demo.utils.checkIfEmpty
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -27,26 +28,35 @@ class SignUpViewModel: BaseViewModel() {
     fun signup(
         userName: EditText?,
         userLastName: EditText?,
+        userSurname: EditText?,
+        userUsername: EditText?,
         userEmail: EditText?,
         userPass: EditText?,
         userPassConfirm: EditText?
     ) {
-        userName?.checkForEmpty()
-        userLastName?.checkForEmpty()
-        userEmail?.checkForEmpty()
-        userPass?.checkForEmpty()
-        userPassConfirm?.checkForEmpty()
+        if (userName?.checkIfEmpty("Dato necesario") == true) return
+        if (userLastName?.checkIfEmpty("Dato necesario") == true) return
+        if (userSurname?.checkIfEmpty("Dato necesario") == true) return
+        if (userUsername?.checkIfEmpty("Dato necesario") == true) return
+        if (userEmail?.checkIfEmpty("Dato necesario") == true) return
+        if (userPass?.checkIfEmpty("Dato necesario") == true) return
+        if (userPassConfirm?.checkIfEmpty("Dato necesario") == true) return
+        if (userEmail?.checkIfEmailSyntax() == false) return
+        if (userPass?.text.toString() != userPassConfirm?.text.toString()) {
+            userPass?.error = "Las contraseñas no coinciden"
+            return
+        }
 
-        //val newUSer = User(userName?.text.toString(),userEmail?.text.toString(),"")
-        val user = User(username = "Rafafv", email = "rflores@ts4.mx", password = "Rafa123@", firstName = "Rafael"
-        , firstSurname = "Flores", secondSurname = "Velazquez", profile = "promoter")
+       /* val user = User (username = userUsername?.text.toString(), email = userEmail?.text.toString(),
+            password = userPass?.text.toString(), firstName = userName?.text.toString(),
+            firstSurname = userLastName?.text.toString(), secondSurname = userSurname?.text.toString(), profile = "promoter")
         subscription = api.signup(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { onSubscribeStart()}
             .doOnTerminate { onTerminate() }
             .subscribe({ it -> onSuccessSigUp(it) },
-                { error -> showError(error) })
+                { error -> showError(error) })*/
     }
 
     private fun showError(error: Throwable?) {

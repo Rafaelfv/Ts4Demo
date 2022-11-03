@@ -43,11 +43,25 @@ fun removeFragmentExtension(fragmentManager: FragmentManager, fragment: Fragment
         .commitAllowingStateLoss()
 }
 
-fun EditText.checkForEmpty() {
-    if(this.text.isEmpty()) {
-        this.setError("Dato necesario")
+fun EditText?.checkIfEmpty(message: String): Boolean {
+    return if (this?.text?.isEmpty() == true) {
+        this.error = message
+        true
+    } else false
+}
+
+fun EditText?.checkIfEmailSyntax(errorMessage: String = "Error de sintaxis"): Boolean {
+    return if (this?.text?.isEmpty() == false &&
+        this.text?.contains("@") == true &&
+        this.text?.contains(".") == true) {
+        true
+    } else{
+        this?.error = errorMessage
+        false
     }
 }
+
+
 
 fun String.showToastMessage(){
     Toast.makeText(Ts4Application.context,this, Toast.LENGTH_LONG).show()

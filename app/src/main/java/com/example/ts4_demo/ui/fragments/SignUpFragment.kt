@@ -20,7 +20,6 @@ class SignUpFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
-
     }
 
     override fun onCreateView(
@@ -34,7 +33,7 @@ class SignUpFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_signup.setOnClickListener {
-            viewModel.signup(user_name, user_last_name, user_email, user_pass, user_pass_confirm)
+            viewModel.signup(user_name, user_last_name, user_surname, user_username, user_email, user_pass, user_pass_confirm)
         }
 
         viewModel.codeHttp.observe(viewLifecycleOwner, Observer<Int> {

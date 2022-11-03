@@ -11,7 +11,7 @@ import retrofit2.http.POST
 interface ApiLogin {
 
     @Headers("Authorization: Bearer 2viktpsXucqnjEj6L7mRefe5mkQT7W4c","Accept: application/json", "Connection: close")
-    @POST("registerUser")
+    @POST("signUp")
     fun signup(@Body user: User): Single<Response<ResponseSignup>>
 
 }
