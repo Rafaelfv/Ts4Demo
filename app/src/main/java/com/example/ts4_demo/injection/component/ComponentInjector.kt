@@ -1,8 +1,8 @@
-package com.grupo.jibaro.tienditas_repartidor.injection.component
+package com.example.ts4_demo.injection.component
 
+import com.example.ts4_demo.injection.module.NetworkModule
 import com.example.ts4_demo.ui.viewModels.SignInViewModel
 import com.example.ts4_demo.ui.viewModels.SignUpViewModel
-import com.grupo.jibaro.tienditas_repartidor.injection.module.NetworkModule
 import dagger.Component
 
 @Component(modules = [(NetworkModule::class)])
@@ -15,8 +15,8 @@ interface ComponentlInjector {
     fun inject(signUpViewModel: SignUpViewModel)
 
     @Component.Builder
-    interface Builder{
+    interface Builder {
         fun build(): ComponentlInjector
-        fun networkModule(networkModule:NetworkModule): Builder
+        fun networkModule(networkModule: NetworkModule): Builder
     }
 }

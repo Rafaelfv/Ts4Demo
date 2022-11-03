@@ -3,10 +3,11 @@ package com.example.ts4_demo
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
-import com.grupo.jibaro.tienditas_repartidor.injection.component.ComponentlInjector
-import com.grupo.jibaro.tienditas_repartidor.injection.component.DaggerComponentlInjector
-import com.grupo.jibaro.tienditas_repartidor.injection.module.NetworkModule
-import com.grupo.jibaro.tienditas_repartidor.utils.MySharePreferences
+import com.example.ts4_demo.injection.component.ComponentlInjector
+import com.example.ts4_demo.injection.component.DaggerComponentlInjector
+import com.example.ts4_demo.injection.module.NetworkModule
+import com.example.ts4_demo.utils.MySharePreferences
+
 
 class Ts4Application : Application() {
 

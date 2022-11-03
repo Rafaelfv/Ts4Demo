@@ -1,8 +1,7 @@
-package com.grupo.jibaro.tienditas_repartidor.utils
+package com.example.ts4_demo.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.ts4_demo.utils.IS_LOGIN_FLAG
 
 object MySharePreferences {
     private const val NAME = "consumer_good"

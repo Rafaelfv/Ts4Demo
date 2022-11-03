@@ -8,9 +8,9 @@ import com.example.ts4_demo.data.models.login.Credentials
 import com.example.ts4_demo.data.models.login.LoginResponse
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
+import com.example.ts4_demo.utils.MySharePreferences
 import com.example.ts4_demo.utils.checkForEmpty
 import com.example.ts4_demo.utils.showToastMessage
-import com.grupo.jibaro.tienditas_repartidor.utils.MySharePreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -58,11 +58,14 @@ class SignInViewModel : BaseViewModel() {
         when (response?.code()) {
             200 -> {
                 isLogin.value = true
-                MySharePreferences.setLogin(true)
-                MySharePreferences.setIdToken(response.body()!!.idToken)
-                MySharePreferences.setRefreshToken(response.body()!!.refreshToken)
-                MySharePreferences.setSalesUserId(response.body()!!.salesforceUserId)
-                MySharePreferences.setSalesforceToken(response.body()!!.salesforceIdToken)
+
+                MySharePreferences.apply {
+                    setLogin(true)
+                    setIdToken(response.body()!!.idToken)
+                    setRefreshToken(response.body()!!.refreshToken)
+                    setSalesUserId(response.body()!!.salesforceUserId)
+                    setSalesforceToken(response.body()!!.salesforceIdToken)
+                }
 
                 success(Ts4Application.resourceManager.getLoginSuccess)
             }
