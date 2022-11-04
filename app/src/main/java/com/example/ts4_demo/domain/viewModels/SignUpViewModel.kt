@@ -8,7 +8,6 @@ import com.example.ts4_demo.Ts4Application
 import com.example.ts4_demo.data.models.User
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
-import com.example.ts4_demo.utils.checkIfEmailSyntax
 import com.example.ts4_demo.utils.checkIfEmpty
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -16,7 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 import javax.inject.Inject
 
-class SignUpViewModel: BaseViewModel() {
+class SignUpViewModel : BaseViewModel() {
 
 
     @Inject
@@ -42,19 +41,27 @@ class SignUpViewModel: BaseViewModel() {
         if (userEmail?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
         if (userPass?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
         if (userPassConfirm?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail?.text.toString()).matches()) return
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail?.text.toString())
+                .matches()
+        ) return
         if (userPass?.text.toString() != userPassConfirm?.text.toString()) {
             userPass?.error = Ts4Application.resourceManager.getPasswordNotEquals
             return
         }
 
-        val user = User (username = userUsername?.text.toString(), email = userEmail?.text.toString(),
-            password = userPass?.text.toString(), firstName = userName?.text.toString(),
-            firstSurname = userLastName?.text.toString(), secondSurname = userSurname?.text.toString(), profile = "promoter")
+        val user = User(
+            username = userUsername?.text.toString(),
+            email = userEmail?.text.toString(),
+            password = userPass?.text.toString(),
+            firstName = userName?.text.toString(),
+            firstSurname = userLastName?.text.toString(),
+            secondSurname = userSurname?.text.toString(),
+            profile = "promoter"
+        )
         subscription = api.signup(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { onSubscribeStart()}
+            .doOnSubscribe { onSubscribeStart() }
             .doOnTerminate { onTerminate() }
             .subscribe({ it -> onSuccessSigUp(it) },
                 { error -> showError(error) })
@@ -73,7 +80,7 @@ class SignUpViewModel: BaseViewModel() {
             400 -> codeHttp.value = 400
             401 -> codeHttp.value = 401
             500 -> codeHttp.value = 500
-            200 ->{
+            200 -> {
                 codeHttp.value = 200
             }
         }
