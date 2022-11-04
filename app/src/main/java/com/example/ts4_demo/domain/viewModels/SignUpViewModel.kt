@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import com.example.ts4_demo.ResponseSignup
+import com.example.ts4_demo.Ts4Application
 import com.example.ts4_demo.data.models.User
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
@@ -34,16 +35,16 @@ class SignUpViewModel: BaseViewModel() {
         userPass: EditText?,
         userPassConfirm: EditText?
     ) {
-        if (userName?.checkIfEmpty("Dato necesario") == true) return
-        if (userLastName?.checkIfEmpty("Dato necesario") == true) return
-        if (userSurname?.checkIfEmpty("Dato necesario") == true) return
-        if (userUsername?.checkIfEmpty("Dato necesario") == true) return
-        if (userEmail?.checkIfEmpty("Dato necesario") == true) return
-        if (userPass?.checkIfEmpty("Dato necesario") == true) return
-        if (userPassConfirm?.checkIfEmpty("Dato necesario") == true) return
-        if (userEmail?.checkIfEmailSyntax() == false) return
+        if (userName?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (userLastName?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (userSurname?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (userUsername?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (userEmail?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (userPass?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (userPassConfirm?.checkIfEmpty(Ts4Application.resourceManager.getEmptyMessage) == true) return
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail?.text.toString()).matches()) return
         if (userPass?.text.toString() != userPassConfirm?.text.toString()) {
-            userPass?.error = "Las contraseñas no coinciden"
+            userPass?.error = Ts4Application.resourceManager.getPasswordNotEquals
             return
         }
 
@@ -77,7 +78,6 @@ class SignUpViewModel: BaseViewModel() {
             }
         }
     }
-
 
     private fun onTerminate() {
         loadingVisibility.value = View.GONE

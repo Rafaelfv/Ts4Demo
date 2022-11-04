@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ts4_demo.R
+import com.example.ts4_demo.Ts4Application
 import com.example.ts4_demo.ui.viewModels.SignUpViewModel
 import com.example.ts4_demo.utils.showToastMessage
 import kotlinx.android.synthetic.main.fragment_signup.*
@@ -38,15 +39,9 @@ class SignUpFragment: Fragment() {
 
         viewModel.codeHttp.observe(viewLifecycleOwner, Observer<Int> {
             when(it){
-                201 -> {
-                    "Registro exitoso".showToastMessage()
-                    //listener.goToCodeFragment(it.body())
-                }
-                400 -> "The username is already in use by another account.".showToastMessage()
-                401 -> "Invalid application token.".showToastMessage()
-                else -> {
-
-                }
+                201 -> Ts4Application.resourceManager.getSingUpSuccess.showToastMessage()
+                400 -> Ts4Application.resourceManager.getUserAlreadyUsed.showToastMessage()
+                401 -> Ts4Application.resourceManager.getTokenInvalid.showToastMessage()
             }
         })
 

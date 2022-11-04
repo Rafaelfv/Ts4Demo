@@ -50,17 +50,6 @@ fun EditText?.checkIfEmpty(message: String): Boolean {
     } else false
 }
 
-fun EditText?.checkIfEmailSyntax(errorMessage: String = "Error de sintaxis"): Boolean {
-    return if (this?.text?.isEmpty() == false &&
-        this.text?.contains("@") == true &&
-        this.text?.contains(".") == true) {
-        true
-    } else{
-        this?.error = errorMessage
-        false
-    }
-}
-
 fun EditText.checkForEmpty(message: String) {
     if (this.text.isEmpty()) {
         this.error = message
