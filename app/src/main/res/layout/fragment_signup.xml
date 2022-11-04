@@ -22,13 +22,34 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="50dp"
-        android:hint="apellido"
+        android:hint="apellido paterno"
         android:id="@+id/user_last_name"
         />
 
-
     <EditText
         android:layout_below="@+id/user_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="50dp"
+        android:hint="apellido materno"
+        android:id="@+id/user_surname"
+        />
+
+    <EditText
+        android:layout_below="@+id/user_surname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="50dp"
+        android:hint="Username/alias"
+        android:id="@+id/user_username"
+        />
+
+    <EditText
+        android:layout_below="@+id/user_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"

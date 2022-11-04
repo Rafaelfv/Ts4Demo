@@ -43,10 +43,11 @@ fun removeFragmentExtension(fragmentManager: FragmentManager, fragment: Fragment
         .commitAllowingStateLoss()
 }
 
-fun EditText.checkForEmpty() {
-    if (this.text.isEmpty()) {
-        this.setError("Dato necesario")
-    }
+fun EditText?.checkIfEmpty(message: String): Boolean {
+    return if (this?.text?.isEmpty() == true) {
+        this.error = message
+        true
+    } else false
 }
 
 fun EditText.checkForEmpty(message: String) {

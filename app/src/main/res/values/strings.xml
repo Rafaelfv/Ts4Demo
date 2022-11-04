@@ -18,4 +18,10 @@
     <string name="loggin_success">Login successful</string>
     <string name="bad_credentials">The username and/or password are incorrect</string>
     <string name="no_verify">Unverified account, check your mail and verify your registration</string>
+
+    <!-- register -->
+    <string name="username_already_used">"The username is already in use by another account."</string>
+    <string name="token_invalid">"Invalid application token."</string>
+    <string name="signup_success">"Invalid application token."</string>
+    <string name="passwords_not_equals">"Las contraseñas no coinciden"</string>
 </resources>

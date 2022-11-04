@@ -57,5 +57,18 @@ class Ts4Application : Application() {
         val getErrorServer: String
             get() = resources.getString(R.string.error_server)
 
+        val getUserAlreadyUsed: String
+            get() = resources.getString(R.string.username_already_used)
+
+        val getTokenInvalid: String
+            get() = resources.getString(R.string.token_invalid)
+
+        val getSingUpSuccess: String
+            get() = resources.getString(R.string.signup_success)
+
+        val getPasswordNotEquals: String
+            get() = resources.getString(R.string.passwords_not_equals)
+
+
     }
 }
