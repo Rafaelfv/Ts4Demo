@@ -1,7 +1,6 @@
 package com.example.ts4_demo.injection.component
 
 import com.example.ts4_demo.injection.module.NetworkModule
-import com.example.ts4_demo.injection.module.NetworkModuleSF
 import com.example.ts4_demo.ui.viewModels.SignInViewModel
 import com.example.ts4_demo.ui.viewModels.SignUpViewModel
 import dagger.Component
@@ -21,6 +20,5 @@ interface ComponentlInjector {
     interface Builder {
         fun build(): ComponentlInjector
         fun networkModule(networkModule: NetworkModule): Builder
-        //fun networkModuleSF(networkModuleSF: NetworkModuleSF): Builder
     }
 }
