@@ -16,9 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
-import retrofit2.Retrofit
 import javax.inject.Inject
-import javax.inject.Named
 
 class SignInViewModel : BaseViewModel() {
 
@@ -27,28 +25,10 @@ class SignInViewModel : BaseViewModel() {
     @Inject
     lateinit var apiSF:ApiSalesForce
 
-
     var loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     var isLogin: MutableLiveData<Boolean> = MutableLiveData()
     private lateinit var subscription: Disposable
 
-    fun signIn(user: EditText?, pass: EditText?){
-        val a = 0
-
-        subscription = apiSF.getContacts()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { loadingVisibility.value = View.VISIBLE }
-            .doOnTerminate { loadingVisibility.value = View.GONE }
-            .subscribe(
-                { it ->
-                    val a = 0
-                }, { error ->
-                    val a = 0
-                }
-            )
-    }
-/*
     fun signIn(user: EditText?, pass: EditText?) {
 
         if (user?.text!!.isEmpty()) {
@@ -76,8 +56,6 @@ class SignInViewModel : BaseViewModel() {
                 }
             )
     }
-
- */
 
     private fun onSuccessSigUp(response: Response<LoginResponse>?) {
 
