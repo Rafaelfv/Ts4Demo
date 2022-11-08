@@ -16,7 +16,8 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-        buildConfigField "String", "BASE_URL", '"https://us-central1-consumergood-e6581.cloudfunctions.net/"'
+        buildConfigField "String", "BASE_URL_CONSUMERGOOD", '"https://us-central1-consumergood-e6581.cloudfunctions.net/"'
+        buildConfigField "String", "BASE_URL_SALESFORCE", '"https://te1663020896987.my.salesforce.com/"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

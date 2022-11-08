@@ -4,8 +4,10 @@ import com.example.ts4_demo.injection.module.NetworkModule
 import com.example.ts4_demo.ui.viewModels.SignInViewModel
 import com.example.ts4_demo.ui.viewModels.SignUpViewModel
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = [(NetworkModule::class)])
+@Singleton
+@Component(modules = [NetworkModule::class])
 interface ComponentlInjector {
 
     /**

@@ -7,6 +7,7 @@ import com.example.ts4_demo.Ts4Application
 import com.example.ts4_demo.data.models.login.Credentials
 import com.example.ts4_demo.data.models.login.LoginResponse
 import com.example.ts4_demo.domain.repository.ApiLogin
+import com.example.ts4_demo.domain.repository.ApiSalesForce
 import com.example.ts4_demo.domain.viewModels.BaseViewModel
 import com.example.ts4_demo.utils.MySharePreferences
 import com.example.ts4_demo.utils.checkForEmpty
@@ -21,6 +22,9 @@ class SignInViewModel : BaseViewModel() {
 
     @Inject
     lateinit var api: ApiLogin
+    @Inject
+    lateinit var apiSF:ApiSalesForce
+
     var loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     var isLogin: MutableLiveData<Boolean> = MutableLiveData()
     private lateinit var subscription: Disposable
