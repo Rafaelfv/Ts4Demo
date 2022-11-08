@@ -3,6 +3,7 @@ package com.example.ts4_demo.injection.module
 import com.example.ts4_demo.BuildConfig
 import com.example.ts4_demo.domain.repository.ApiLogin
 import com.example.ts4_demo.utils.BEARER
+import com.example.ts4_demo.utils.BEARER_SF
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
@@ -18,9 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import javax.inject.Singleton
 
-
 @Module
-object NetworkModule {
+object NetworkModuleSF {
 
     /**
      * Provides the Post service implementation.
@@ -29,7 +29,7 @@ object NetworkModule {
      */
     @Provides
     @Singleton
-    internal fun providePostApi(retrofit: Retrofit): ApiLogin {
+    internal fun providePostApiSF(retrofit: Retrofit): ApiLogin {
         return retrofit.create(ApiLogin::class.java)
     }
 
@@ -42,7 +42,7 @@ object NetworkModule {
     @JvmStatic
     internal fun provideRetrofitInterface(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL_CONSUMERGOOD)
+            .baseUrl(BuildConfig.BASE_URL_SALESFORCE)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
@@ -65,7 +65,7 @@ object NetworkModule {
             val newRequest: Request = chain.request().newBuilder()
                 .addHeader(
                     "Authorization",
-                    " Bearer $BEARER"
+                    " Bearer $BEARER_SF"
                 )
                 .build()
             chain.proceed(newRequest)

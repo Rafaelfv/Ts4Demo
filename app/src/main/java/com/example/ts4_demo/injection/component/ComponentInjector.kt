@@ -1,11 +1,14 @@
 package com.example.ts4_demo.injection.component
 
 import com.example.ts4_demo.injection.module.NetworkModule
+import com.example.ts4_demo.injection.module.NetworkModuleSF
 import com.example.ts4_demo.ui.viewModels.SignInViewModel
 import com.example.ts4_demo.ui.viewModels.SignUpViewModel
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = [(NetworkModule::class)])
+@Singleton
+@Component(modules = [NetworkModule::class])
 interface ComponentlInjector {
 
     /**
@@ -18,5 +21,6 @@ interface ComponentlInjector {
     interface Builder {
         fun build(): ComponentlInjector
         fun networkModule(networkModule: NetworkModule): Builder
+        //fun networkModuleSF(networkModuleSF: NetworkModuleSF): Builder
     }
 }
